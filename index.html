@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atendimento ao Aluno | ETEC</title>
+  <meta name="description" content="Peça documentos, tire dúvidas e acompanhe solicitações da secretaria da ETEC em um só lugar.">
+  <!-- Ordem importa: base global primeiro, cabeçalho depois -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
+</head>
+<body>
+  <!-- Link para teclado/leitor de tela pular direto ao conteúdo -->
+  <a class="pular-conteudo" href="#conteudo">Ir para o conteúdo</a>
+
+  <!-- ========== CABEÇALHO ========== -->
+  <header class="cabecalho">
+    <div class="cabecalho__interno">
+      <a class="cabecalho__logo" href="#inicio">
+        <img src="images/logo-etec.svg" alt="ETEC - página inicial do atendimento ao aluno" width="128" height="45">
+      </a>
+
+      <!-- Checkbox + label: abre o menu no mobile sem JavaScript -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-botao">
+        <span class="menu-botao__texto">Menu</span>
+        <span class="menu-botao__icone" aria-hidden="true"></span>
+      </label>
+
+      <nav class="menu" aria-label="Navegação principal">
+        <ul class="menu__lista">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a class="menu__destaque" href="#contato">Abrir solicitação</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="inicio" aria-labelledby="titulo-hero">
+      <div class="container hero__interno">
+        <h1 id="titulo-hero">Secretaria da ETEC, sem fila.</h1>
+        <p class="hero__texto">Peça declarações, histórico escolar e segunda via de documentos, tire dúvidas e acompanhe cada pedido pelo celular.</p>
+        <div class="hero__acoes">
+          <a class="botao botao--primario" href="#contato">Abrir solicitação</a>
+          <a class="botao botao--secundario" href="#servicos">Ver serviços</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVIÇOS ========== -->
+    <section class="secao" id="servicos" aria-labelledby="titulo-servicos">
+      <div class="container">
+        <h2 id="titulo-servicos">O que você resolve aqui</h2>
+        <div class="cartoes">
+          <article class="cartao">
+            <h3>Documentos escolares</h3>
+            <p>Declaração de matrícula, histórico escolar e certificado de conclusão.</p>
+          </article>
+          <article class="cartao">
+            <h3>Dúvidas acadêmicas</h3>
+            <p>Calendário, notas, frequência, estágio e Trabalho de Conclusão de Curso.</p>
+          </article>
+          <article class="cartao">
+            <h3>Acompanhamento</h3>
+            <p>Veja o andamento do pedido e receba o aviso quando o documento estiver pronto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== COMO FUNCIONA (sequência real: lista ordenada) ========== -->
+    <section class="secao secao--escura" id="como-funciona" aria-labelledby="titulo-passos">
+      <div class="container">
+        <h2 id="titulo-passos">Como funciona</h2>
+        <ol class="passos">
+          <li class="passo">
+            <article>
+              <h3>Preencha o pedido</h3>
+              <p>Informe seu nome, RM e o que precisa.</p>
+            </article>
+          </li>
+          <li class="passo">
+            <article>
+              <h3>Aguarde a análise</h3>
+              <p>A secretaria confere os dados e responde por e-mail.</p>
+            </article>
+          </li>
+          <li class="passo">
+            <article>
+              <h3>Retire o documento</h3>
+              <p>Receba o arquivo digital ou retire na unidade.</p>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== CONTATO / FORMULÁRIO ========== -->
+    <section class="secao" id="contato" aria-labelledby="titulo-contato">
+      <div class="container contato">
+        <div class="contato__texto">
+          <h2 id="titulo-contato">Abra sua solicitação</h2>
+          <p>Todos os campos são obrigatórios. A resposta chega por e-mail.</p>
+        </div>
+
+        <form class="formulario" action="#" method="post">
+          <div class="campo">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required>
+          </div>
+          <div class="campo">
+            <label for="rm">RM (registro de matrícula)</label>
+            <input type="text" id="rm" name="rm" inputmode="numeric" required>
+          </div>
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="campo">
+            <label for="assunto">Assunto</label>
+            <select id="assunto" name="assunto" required>
+              <option value="">Escolha uma opção</option>
+              <option>Declaração de matrícula</option>
+              <option>Histórico escolar</option>
+              <option>Dúvida acadêmica</option>
+              <option>Outro assunto</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="botao botao--primario">Enviar solicitação</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== RODAPÉ ========== -->
+  <footer class="rodape">
+    <div class="container rodape__interno">
+      <img src="images/logo-etec.svg" alt="Logo da ETEC" width="96" height="34">
+      <p>Atendimento ao Aluno ETEC. Substitua este texto pelos dados oficiais da unidade.</p>
+      <p><small>&copy; 2026 ETEC. Todos os direitos reservados.</small></p>
+    </div>
+  </footer>
+</body>
+</html>

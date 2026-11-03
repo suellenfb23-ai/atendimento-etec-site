@@ -1,0 +1,183 @@
+/* =====================================================
+   styles.css - estilos globais (mobile-first)
+   Paleta da marca ETEC: vermelho, preto e branco
+   ===================================================== */
+
+/* ---------- 1. VARIÁVEIS ---------- */
+:root {
+  /* Cores */
+  --cor-primaria: #c1121f;        /* vermelho ETEC */
+  --cor-primaria-escura: #8f0d17; /* hover/foco do vermelho */
+  --cor-preto: #000000;
+  --cor-branco: #ffffff;
+  --cor-cinza-claro: #f2f2f2;     /* fundos suaves */
+  --cor-cinza-borda: #d4d4d4;
+  --cor-texto: #1a1a1a;
+
+  /* Tipografia */
+  --fonte-base: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --tamanho-base: 1rem;
+  --altura-linha: 1.6;
+
+  /* Espaçamento e forma */
+  --espaco-1: 0.5rem;
+  --espaco-2: 1rem;
+  --espaco-3: 1.5rem;
+  --espaco-4: 3rem;
+  --raio: 4px;
+  --largura-max: 72rem;
+}
+
+/* ---------- 2. RESET ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  font-family: var(--fonte-base);
+  font-size: var(--tamanho-base);
+  line-height: var(--altura-linha);
+  color: var(--cor-texto);
+  background: var(--cor-branco);
+}
+img, svg { display: block; max-width: 100%; height: auto; }
+ul, ol { list-style: none; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* ---------- 3. UTILITÁRIOS E ACESSIBILIDADE ---------- */
+.container {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-inline: auto;
+  padding-inline: var(--espaco-2);
+}
+
+/* Foco visível para navegação por teclado */
+:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 3px;
+}
+
+.pular-conteudo {
+  position: absolute;
+  left: var(--espaco-2);
+  top: -4rem;
+  background: var(--cor-preto);
+  color: var(--cor-branco);
+  padding: var(--espaco-1) var(--espaco-2);
+  z-index: 200;
+}
+.pular-conteudo:focus { top: var(--espaco-1); }
+
+/* ---------- 4. TIPOGRAFIA ---------- */
+h1 { font-size: 2.25rem; line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-size: 1.75rem; line-height: 1.2; margin-bottom: var(--espaco-3); }
+h3 { font-size: 1.15rem; margin-bottom: var(--espaco-1); }
+
+/* ---------- 5. BOTÕES ---------- */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;             /* alvo de toque confortável */
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--cor-primaria);
+  border-radius: var(--raio);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.botao--primario { background: var(--cor-primaria); color: var(--cor-branco); }
+.botao--primario:hover { background: var(--cor-primaria-escura); border-color: var(--cor-primaria-escura); }
+.botao--secundario { background: transparent; color: var(--cor-branco); border-color: var(--cor-branco); }
+.botao--secundario:hover { background: var(--cor-branco); color: var(--cor-preto); }
+
+/* ---------- 6. HERO ---------- */
+.hero {
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+  padding-block: var(--espaco-4);
+}
+.hero__interno { display: flex; flex-direction: column; gap: var(--espaco-3); }
+.hero__texto { font-size: 1.15rem; max-width: 40rem; }
+.hero__acoes { display: flex; flex-direction: column; gap: var(--espaco-2); }
+
+/* ---------- 7. SEÇÕES ---------- */
+.secao { padding-block: var(--espaco-4); }
+.secao--escura { background: var(--cor-preto); color: var(--cor-branco); }
+
+/* ---------- 8. CARTÕES (serviços) ---------- */
+.cartoes { display: flex; flex-direction: column; gap: var(--espaco-3); }
+.cartao {
+  padding: var(--espaco-3);
+  border: 1px solid var(--cor-cinza-borda);
+  border-left: 6px solid var(--cor-primaria);
+  background: var(--cor-cinza-claro);
+}
+
+/* ---------- 9. PASSOS (sequência real: numeração CSS) ---------- */
+.passos { display: flex; flex-direction: column; gap: var(--espaco-3); counter-reset: passo; }
+.passo { counter-increment: passo; display: flex; gap: var(--espaco-2); }
+.passo::before {
+  content: counter(passo);
+  flex: 0 0 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+/* ---------- 10. CONTATO / FORMULÁRIO ---------- */
+.contato { display: flex; flex-direction: column; gap: var(--espaco-3); }
+.formulario { display: flex; flex-direction: column; gap: var(--espaco-2); }
+.campo { display: flex; flex-direction: column; gap: 0.35rem; }
+.campo label { font-weight: 600; }
+.campo input, .campo select, .campo textarea {
+  padding: 0.75rem;
+  border: 2px solid var(--cor-preto);
+  border-radius: var(--raio);
+  background: var(--cor-branco);
+}
+.campo input:focus-visible, .campo select:focus-visible, .campo textarea:focus-visible {
+  border-color: var(--cor-primaria);
+}
+
+/* ---------- 11. RODAPÉ ---------- */
+.rodape { background: var(--cor-preto); color: var(--cor-branco); padding-block: var(--espaco-4); border-top: 6px solid var(--cor-primaria); }
+.rodape__interno { display: flex; flex-direction: column; gap: var(--espaco-2); }
+
+/* =====================================================
+   MEDIA QUERIES (de baixo para cima: mobile-first)
+   ===================================================== */
+
+/* Tablet */
+@media (min-width: 48em) { /* 768px */
+  .container { padding-inline: var(--espaco-3); }
+  h1 { font-size: 3.25rem; }
+  h2 { font-size: 2.25rem; }
+  .hero { padding-block: 6rem; }
+  .hero__acoes { flex-direction: row; }
+  .cartoes { flex-direction: row; }
+  .cartao { flex: 1; }
+  .passos { flex-direction: row; }
+  .passo { flex: 1; }
+  .contato { flex-direction: row; gap: var(--espaco-4); }
+  .contato__texto, .formulario { flex: 1; }
+  .rodape__interno { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+/* Desktop */
+@media (min-width: 64em) { /* 1024px */
+  h1 { font-size: 4rem; }
+  .secao { padding-block: 5rem; }
+}
